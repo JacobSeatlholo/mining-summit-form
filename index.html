@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — Mining Integration Summit 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coal: #111110;
+      --ore:  #1c1c1a;
+      --slate: #3a3a36;
+      --dust: #8a8a7e;
+      --ash:  #c8c8be;
+      --linen: #f4f2ed;
+      --gold:  #b8922a;
+      --gold-light: #d4aa44;
+      --white: #fafaf8;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--linen);
+      color: var(--coal);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── LEFT PANEL ── */
+    .panel-left {
+      background: var(--coal);
+      color: var(--linen);
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-left::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,146,42,0.15);
+      pointer-events: none;
+    }
+    .panel-left::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,146,42,0.10);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .event-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .event-title span {
+      color: var(--gold);
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 32px 0;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .event-meta {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.45s;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .meta-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--gold);
+    }
+
+    .meta-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dust);
+      margin-bottom: 3px;
+    }
+
+    .meta-value {
+      font-size: 15px;
+      color: var(--ash);
+      font-weight: 300;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--dust);
+      line-height: 1.6;
+      border-left: 1px solid var(--slate);
+      padding-left: 20px;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .panel-right {
+      background: var(--white);
+      padding: 64px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .form-header {
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.3s;
+    }
+
+    .form-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--coal);
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      font-size: 13px;
+      color: var(--dust);
+      letter-spacing: 0.02em;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .field:nth-child(1) { animation-delay: 0.35s; }
+    .field:nth-child(2) { animation-delay: 0.42s; }
+    .field:nth-child(3) { animation-delay: 0.49s; }
+    .field:nth-child(4) { animation-delay: 0.56s; }
+    .field:nth-child(5) { animation-delay: 0.63s; }
+    .field:nth-child(6) { animation-delay: 0.70s; }
+    .field.full        { grid-column: 1 / -1; }
+
+    label {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--linen);
+      border: 1px solid #dedad2;
+      border-radius: 2px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--coal);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184,146,42,0.10);
+      background: var(--white);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: var(--ash);
+      font-weight: 300;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8a7e' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select option { color: var(--coal); }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* ── SUBMIT ── */
+    .submit-wrap {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.78s;
+    }
+
+    .btn-submit {
+      flex-shrink: 0;
+      background: var(--coal);
+      color: var(--white);
+      border: none;
+      padding: 14px 36px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+
+    .btn-submit:hover::after { transform: scaleX(1); }
+    .btn-submit:hover { color: var(--coal); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit span { position: relative; z-index: 1; }
+
+    .privacy-note {
+      font-size: 11.5px;
+      color: var(--dust);
+      line-height: 1.5;
+    }
+
+    /* ── SUCCESS STATE ── */
+    .success-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      gap: 16px;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--coal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success-icon svg { color: var(--gold); }
+
+    .success-state h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--coal);
+    }
+
+    .success-state p {
+      font-size: 14px;
+      color: var(--dust);
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    /* ── STATUS MSG ── */
+    .status-msg {
+      font-size: 12px;
+      padding: 10px 14px;
+      border-radius: 2px;
+      display: none;
+      grid-column: 1 / -1;
+    }
+    .status-msg.error {
+      display: block;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .page { grid-template-columns: 1fr; }
+      .panel-left { padding: 48px 32px; }
+      .panel-right { padding: 48px 32px; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- LEFT: EVENT INFO -->
+  <div class="panel-left">
+    <div>
+      <p class="eyebrow">Official Registration</p>
+      <h1 class="event-title">Mining<br>Integration<br><span>Summit</span></h1>
+      <div class="divider"></div>
+
+      <div class="event-meta">
+        <div class="meta-item">
+          <svg class="meta-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <div>
+            <p class="meta-label">Date</p>
+            <p class="meta-value">20 – 22 July 2026</p>
+          </div>
+        </div>
+        <div class="meta-item">
+          <svg class="meta-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <div>
+            <p class="meta-label">Duration</p>
+            <p class="meta-value">Three days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="tagline">
+      Where industry leaders converge to shape the future of mining integration.
+    </p>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="panel-right">
+    <div id="formWrap">
+      <div class="form-header">
+        <h2>Reserve Your Place</h2>
+        <p>Complete the form below — we'll confirm your registration by email.</p>
+      </div>
+
+      <form id="regForm" novalidate>
+        <div class="form-grid">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+          </div>
+          <div class="field full">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+          <div class="field full">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+27 __ ___ ____" />
+          </div>
+          <div class="field full">
+            <label for="company">Company / Organisation</label>
+            <input type="text" id="company" name="company" placeholder="Your company name" />
+          </div>
+          <div class="field full">
+            <label for="role">Job Title</label>
+            <input type="text" id="role" name="role" placeholder="e.g. Head of Operations" />
+          </div>
+          <div class="field full">
+            <label for="attendance">Attendance</label>
+            <select id="attendance" name="attendance">
+              <option value="All three days">All three days (20 – 22 Jul)</option>
+              <option value="Day 1 only">Day 1 only (20 Jul)</option>
+              <option value="Day 2 only">Day 2 only (21 Jul)</option>
+              <option value="Day 3 only">Day 3 only (22 Jul)</option>
+            </select>
+          </div>
+
+          <div class="status-msg" id="statusMsg"></div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span>Register Now</span>
+            </button>
+            <p class="privacy-note">Your details are kept private and used only for event communication.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="successState">
+      <div class="success-icon">
+        <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h3>You're Registered</h3>
+      <p>Thank you for registering for the Mining Integration Summit 2026. A confirmation has been logged — we look forward to seeing you in July.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ─────────────────────────────────────────────
+  // CONFIGURATION — paste your Google Apps Script
+  // Web App URL below after deployment
+  // ─────────────────────────────────────────────
+  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+  const form     = document.getElementById('regForm');
+  const btn      = document.getElementById('submitBtn');
+  const statusEl = document.getElementById('statusMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.className = 'status-msg';
+    statusEl.style.display = 'none';
+
+    // Basic validation
+    const required = ['firstName', 'lastName', 'email'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) { el.style.borderColor = '#b91c1c'; valid = false; }
+      else el.style.borderColor = '';
+    });
+    if (!valid) {
+      statusEl.textContent = 'Please fill in all required fields.';
+      statusEl.className = 'status-msg error';
+      return;
+    }
+
+    // Email check
+    const emailVal = document.getElementById('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      document.getElementById('email').style.borderColor = '#b91c1c';
+      statusEl.textContent = 'Please enter a valid email address.';
+      statusEl.className = 'status-msg error';
+      return;
+    }
+
+    // If no script URL configured, show success preview
+    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+      showSuccess();
+      return;
+    }
+
+    btn.querySelector('span').textContent = 'Submitting…';
+    btn.disabled = true;
+
+    const payload = {
+      firstName:  document.getElementById('firstName').value.trim(),
+      lastName:   document.getElementById('lastName').value.trim(),
+      email:      emailVal,
+      phone:      document.getElementById('phone').value.trim(),
+      company:    document.getElementById('company').value.trim(),
+      role:       document.getElementById('role').value.trim(),
+      attendance: document.getElementById('attendance').value,
+      timestamp:  new Date().toISOString(),
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      showSuccess();
+    } catch (err) {
+      statusEl.textContent = 'Submission failed. Please try again or contact the organiser.';
+      statusEl.className = 'status-msg error';
+      btn.querySelector('span').textContent = 'Register Now';
+      btn.disabled = false;
+    }
+  });
+
+  function showSuccess() {
+    document.getElementById('formWrap').style.display = 'none';
+    const s = document.getElementById('successState');
+    s.style.display = 'flex';
+  }
+</script>
+</body>
+</html>
