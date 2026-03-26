@@ -332,7 +332,11 @@
   .attendance-option input[type="radio"] {
     position: absolute;
     opacity: 0;
-    width: 0; height: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
   }
   .attendance-option.selected {
     border-color: var(--green-mid);
@@ -344,15 +348,17 @@
     color: var(--coal);
     display: block;
     margin-bottom: 2px;
+    pointer-events: none;
   }
   .opt-sub {
     font-size: 11px;
     color: #888;
+    pointer-events: none;
   }
 
   .tier-select-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
     margin-bottom: 16px;
   }
@@ -366,11 +372,17 @@
   }
   .tier-option input[type="radio"] {
     position: absolute;
-    opacity: 0; width: 0; height: 0;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
   }
   .tier-option
 
   .tier-option .t-name {
+    pointer-events: none;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -379,12 +391,14 @@
     margin-bottom: 2px;
   }
   .tier-option .t-price {
+    pointer-events: none;
     font-size: 15px;
     font-weight: 700;
     color: var(--green-mid);
     margin-bottom: 3px;
   }
   .tier-option .t-desc {
+    pointer-events: none;
     font-size: 10.5px;
     color: #888;
     line-height: 1.4;
@@ -476,7 +490,9 @@
     .tier-select-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {
-    .tier-select-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .attendance-grid { grid-template-columns: 1fr; }
+    .tier-select-grid { grid-template-columns: 1fr 1fr; }
     .phone-row { grid-template-columns: 1fr; }
   }
 
@@ -756,7 +772,9 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Attendance option selection
+document.addEventListener("DOMContentLoaded", function() {
+
+  // ── Attendance option selection ──
   document.getElementById('attendanceGrid').addEventListener('click', function(e) {
     const opt = e.target.closest('.attendance-option');
     if (!opt) return;
@@ -773,7 +791,7 @@
     }
   });
 
-  // Tier selection
+  // ── Tier selection ──
   document.getElementById('tierGrid').addEventListener('click', function(e) {
     const opt = e.target.closest('.tier-option');
     if (!opt) return;
@@ -782,14 +800,15 @@
     opt.querySelector('input').checked = true;
   });
 
-  function handleSubmit() {
+  // ── Form submission ──
+  window.handleSubmit = function() {
     const btn = document.getElementById('submitBtn');
     const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const country = document.getElementById('country').value;
-    const company = document.getElementById('company').value.trim();
-    const jobTitle = document.getElementById('jobTitle').value.trim();
+    const lastName  = document.getElementById('lastName').value.trim();
+    const email     = document.getElementById('email').value.trim();
+    const country   = document.getElementById('country').value;
+    const company   = document.getElementById('company').value.trim();
+    const jobTitle  = document.getElementById('jobTitle').value.trim();
 
     if (!firstName || !lastName || !email || !country || !company || !jobTitle) {
       alert('Please fill in all required fields.');
@@ -804,13 +823,30 @@
     btn.textContent = 'Submitting…';
     btn.classList.add('btn-loading');
 
-    // Submit to Google Sheets via your existing Apps Script endpoint
-    const attendance = document.querySelector('.attendance-option.selected')?.dataset.value || '';
-    const tier = document.querySelector('.tier-option.selected')?.dataset.value || 'online';
-    const phone = (document.getElementById('phoneCode').value || '') + ' ' + (document.getElementById('phone').value || '');
+    const attendance = (document.querySelector('.attendance-option.selected') || {}).dataset?.value || '';
+    const tier       = (document.querySelector('.tier-option.selected') || {}).dataset?.value || '';
+    const phoneCode  = document.getElementById('phoneCode').value || '';
+    const phoneNum   = document.getElementById('phone').value || '';
+    const phone      = (phoneCode + ' ' + phoneNum).trim();
 
     const payload = { firstName, lastName, email, phone, country, company, jobTitle, attendance, tier };
 
     fetch('https://script.google.com/macros/s/AKfycbzGvP51xCkknJHw_EkSWfj_zN4-FBHJzMBM0rU1OfTBkf_iKQHy_A1rTkJWJLgbJA/exec', {
       method: 'POST',
-      headers: { 'Content-Type': 'applicati
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      body: JSON.stringify(payload)
+    }).then(function() {
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successPanel').classList.add('visible');
+    }).catch(function() {
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successPanel').classList.add('visible');
+    });
+  };
+
+});
+</script>
+
+</body>
+</html>
