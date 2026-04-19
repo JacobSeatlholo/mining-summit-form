@@ -61,15 +61,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .page-body{display:grid;grid-template-columns:1fr 400px}
 .form-panel{padding:52px 56px;background:#fff;border-right:1px solid var(--ld)}
 
-.section-head{margin-bottom:28px}
-.section-head h2{font-family:var(--sf);font-size:clamp(22px,2.5vw,32px);font-weight:600;color:var(--coal);line-height:1.2;margin-bottom:6px}
-.section-head p{font-size:14px;font-weight:300;color:var(--gr);line-height:1.65}
+.section-head{margin-bottom:32px}
+.section-head h2{font-family:var(--sf);font-size:clamp(28px,3vw,40px);font-weight:600;color:var(--coal);line-height:1.15;margin-bottom:10px}
+.section-head p{font-size:16px;font-weight:300;color:var(--gr);line-height:1.7}
 
-.steps{display:flex;align-items:center;gap:0;margin-bottom:36px;border:1px solid var(--ld);overflow:hidden}
-.step{flex:1;padding:11px 14px;text-align:center;position:relative;border-right:1px solid var(--ld);transition:background .2s}
+.steps{display:flex;align-items:center;gap:0;margin-bottom:40px;border:1px solid var(--ld);overflow:hidden}
+.step{flex:1;padding:14px 16px;text-align:center;position:relative;border-right:1px solid var(--ld);transition:background .2s}
 .step:last-child{border-right:none}
-.step-n{font-family:var(--sc);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:2px}
-.step-l{font-family:var(--sf);font-size:12px;font-weight:600;color:#aaa}
+.step-n{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:3px}
+.step-l{font-family:var(--sf);font-size:14px;font-weight:600;color:#aaa}
 .step.done .step-n,.step.done .step-l{color:var(--green)}
 .step.done{background:rgba(52,67,39,.05)}
 .step.active .step-n,.step.active .step-l{color:var(--gold)}
@@ -79,9 +79,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .form-section{display:none}
 .form-section.active{display:block}
 
-.ff{margin-bottom:16px}
-.ff label{display:block;font-family:var(--sc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:6px}
-.ff input,.ff select,.ff textarea{width:100%;padding:13px 16px;border:1px solid #C8C4BA;background:#fff;font-family:var(--ss);font-size:14px;color:var(--coal);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;border-radius:0}
+.ff{margin-bottom:18px}
+.ff label{display:block;font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#777;margin-bottom:7px}
+.ff input,.ff select,.ff textarea{width:100%;padding:14px 17px;border:1px solid #C8C4BA;background:#fff;font-family:var(--ss);font-size:15px;color:var(--coal);outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;border-radius:0}
 .ff input::placeholder,.ff textarea::placeholder{color:#bbb}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--gold)}
 .ff textarea{height:90px;resize:none}
@@ -94,11 +94,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .tcard:hover{border-color:var(--gold)}
 .tcard.selected{border-color:var(--gold);background:rgba(159,145,98,.06)}
 .tcard.selected::after{content:'\2713';position:absolute;top:10px;right:12px;color:var(--gold);font-size:14px;font-weight:700}
-.tcard-type{font-family:var(--sc);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.tcard-name{font-family:var(--sf);font-size:16px;font-weight:600;color:var(--coal);margin-bottom:8px}
+.tcard-type{font-family:var(--sc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.tcard-name{font-family:var(--sf);font-size:20px;font-weight:600;color:var(--coal);margin-bottom:10px}
 .tcard-perks{list-style:none}
-.tcard-perks li{font-size:12px;font-weight:300;color:var(--gr);padding:3px 0;display:flex;gap:7px;line-height:1.4}
-.tcard-perks li::before{content:'\2713';color:var(--gold);flex-shrink:0;font-size:11px;font-weight:700;margin-top:1px}
+.tcard-perks li{font-size:13px;font-weight:300;color:var(--gr);padding:4px 0;display:flex;gap:7px;line-height:1.5}
+.tcard-perks li::before{content:'\2713';color:var(--gold);flex-shrink:0;font-size:12px;font-weight:700;margin-top:1px}
 
 .region-indicator{display:flex;gap:10px;margin-top:8px}
 .ri{flex:1;padding:10px 10px;border:1px solid var(--ld);background:var(--li);text-align:center}
@@ -115,11 +115,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .btn-submit:hover{background:var(--green)}
 .btn-submit:disabled{background:#bbb;cursor:not-allowed}
 
-.review-block{background:var(--li);border-left:3px solid var(--gold);padding:18px 22px;margin-bottom:14px}
-.review-block h4{font-family:var(--sc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.review-row{display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--ld);font-size:13px}
+.review-block{background:var(--li);border-left:3px solid var(--gold);padding:20px 24px;margin-bottom:14px}
+.review-block h4{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.review-row{display:flex;gap:14px;padding:8px 0;border-bottom:1px solid var(--ld);font-size:14px}
 .review-row:last-child{border-bottom:none}
-.review-row .rk{font-weight:500;color:var(--gr);min-width:130px;flex-shrink:0}
+.review-row .rk{font-weight:500;color:var(--gr);min-width:140px;flex-shrink:0}
 .review-row .rv{font-weight:400;color:var(--coal)}
 .region-tag{display:inline-block;font-family:var(--sc);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
 .region-tag.local{background:rgba(52,67,39,.12);color:var(--green)}
@@ -134,15 +134,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .dl-date{font-family:var(--sf);font-size:21px;font-weight:600;color:#fff;margin-bottom:4px}
 .deadline-box p{font-size:12px;font-weight:300;color:rgba(255,255,255,.5);line-height:1.6}
 .sidebar-block{margin-bottom:26px}
-.sidebar-block h3{font-family:var(--sf);font-size:17px;font-weight:600;color:var(--coal);margin:8px 0 10px;line-height:1.3}
-.sidebar-block p{font-size:13px;font-weight:300;color:var(--gr);line-height:1.7}
+.sidebar-block h3{font-family:var(--sf);font-size:20px;font-weight:600;color:var(--coal);margin:8px 0 12px;line-height:1.3}
+.sidebar-block p{font-size:15px;font-weight:300;color:var(--gr);line-height:1.75}
 .sb-list{list-style:none;margin-top:10px}
-.sb-list li{font-size:13px;font-weight:300;color:var(--gr);padding:6px 0;border-bottom:1px solid var(--ld);display:flex;gap:8px;line-height:1.45}
+.sb-list li{font-size:14px;font-weight:300;color:var(--gr);padding:8px 0;border-bottom:1px solid var(--ld);display:flex;gap:9px;line-height:1.5}
 .sb-list li:last-child{border-bottom:none}
 .sb-list li::before{content:'\2192';color:var(--gold);flex-shrink:0}
 .contact-box{border-top:1px solid var(--ld);padding-top:22px;margin-top:22px}
-.cb-label{font-family:var(--sc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.contact-box a{display:block;font-size:13.5px;color:var(--coal);margin-bottom:6px;transition:color .2s}
+.cb-label{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.contact-box a{display:block;font-size:15px;color:var(--coal);margin-bottom:8px;transition:color .2s}
 .contact-box a:hover{color:var(--gold)}
 
 .success-wrap{display:none;text-align:center;padding:80px 60px;background:#fff}
@@ -153,13 +153,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:9000;background:#fff;border-bott
 .success-wrap p{font-size:15px;font-weight:300;color:var(--gr);line-height:1.75;max-width:480px;margin:0 auto 10px}
 .success-ref{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:22px;display:block}
 
-.parts{background:#fff;border-top:3px solid var(--gold);padding:44px 60px}
-.plbl{font-family:var(--sf);font-size:clamp(18px,2.5vw,26px);font-weight:600;color:var(--coal);text-align:center;display:block;margin-bottom:6px}
-.plbl-sub{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;text-align:center;margin-bottom:30px}
-.plogos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 28px}
-.plogo-item{display:flex;flex-direction:column;align-items:center;padding:12px 16px;transition:opacity .25s,transform .25s;flex-shrink:0}
+.parts{background:#fff;border-top:3px solid var(--gold);padding:56px 60px}
+.plbl{font-family:var(--sf);font-size:clamp(22px,3vw,34px);font-weight:600;color:var(--coal);text-align:center;display:block;margin-bottom:8px;letter-spacing:-.01em}
+.plbl-sub{font-family:var(--sc);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;text-align:center;margin-bottom:44px}
+.plogos{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;gap:0 40px;max-width:100%;margin:0 auto;overflow-x:auto}
+.plogo-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:16px 20px;border:none;background:transparent;transition:opacity .25s,transform .25s;text-decoration:none;color:inherit;flex-shrink:0}
 .plogo-item:hover{opacity:.75;transform:translateY(-3px)}
-.plogo-item img{height:80px;width:130px;object-fit:contain}
+.plogo-item img{height:100px;width:160px;object-fit:contain;filter:brightness(1.05);flex-shrink:0}
 
 footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:44px}
 .fb p{font-size:14px;font-weight:300;color:var(--gr);line-height:1.72;max-width:300px;margin-bottom:18px}
@@ -186,12 +186,14 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
   .form-sidebar{padding:32px 22px}
   .ff-row{grid-template-columns:1fr}
   .ticket-selector{grid-template-columns:1fr}
-  .step-l{font-size:10px}
+  .step-l{font-size:11px}.step-n{font-size:9px}
   .steps{overflow-x:auto}
   .form-nav{flex-direction:column;gap:12px}
   .btn-back,.btn-next{width:100%;text-align:center}
-  .parts{padding:32px 20px}
-  .plogo-item img{height:60px;width:95px}
+  .parts{padding:36px 20px}
+  .plogos{flex-wrap:wrap;gap:16px 24px}
+  .plogo-item{padding:20px 16px}
+  .plogo-item img{height:70px;width:110px}
   footer{grid-template-columns:1fr;padding:36px 22px;gap:22px}
   .fbot{padding:14px 22px}
   .success-wrap{padding:52px 24px}
@@ -379,8 +381,8 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
       <div style="margin-bottom:18px">
         <div style="font-family:var(--sc);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:8px">Delegate Region Classification</div>
         <div class="region-indicator">
-          <div class="ri" id="ri-local"><div class="ri-label">Local<br><small style="font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--ss);font-weight:300;display:block">North West</small></div></div>
-          <div class="ri" id="ri-national"><div class="ri-label">National<br><small style="font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--ss);font-weight:300;display:block">Other SA Province</small></div></div>
+          <div class="ri" id="ri-local"><div class="ri-label">Local<br><small style="font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--ss);font-weight:300;display:block">South Africa</small></div></div>
+          <div class="ri" id="ri-national" style="display:none"></div>
           <div class="ri" id="ri-regional"><div class="ri-label">Regional<br><small style="font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--ss);font-weight:300;display:block">African Country</small></div></div>
           <div class="ri" id="ri-international"><div class="ri-label">International<br><small style="font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--ss);font-weight:300;display:block">Outside Africa</small></div></div>
         </div>
@@ -581,8 +583,9 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
 <script>
 (function(){
 
-  // ── REPLACE THIS with your Google Apps Script Web App URL ──────────────────
-  var SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  // ── Formspree endpoint — replace YOUR_FORM_ID with your Formspree form ID ──
+  // Sign up at formspree.io, create a form, set email to info@samca.co.za
+  var SCRIPT_URL = 'https://formspree.io/f/myknokdd';
   // ────────────────────────────────────────────────────────────────────────────
 
   var currentStep = 1;
@@ -643,16 +646,14 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
     var country = v('f_country');
     var isSA = country==='South Africa';
     document.getElementById('province-wrap').style.display = isSA ? 'block' : 'none';
-    var province = isSA ? v('f_province') : '';
     ['ri-local','ri-national','ri-regional','ri-international'].forEach(function(id){
       document.getElementById(id).classList.remove('active-region');
     });
     if(!country) return;
-    var africa = ['Angola','Botswana','Congo (DRC)','Ghana','Kenya','Mozambique','Namibia','Nigeria','Tanzania','Uganda','Zambia','Zimbabwe','Other African Country'];
-    if(isSA && province==='North West') document.getElementById('ri-local').classList.add('active-region');
-    else if(isSA && province) document.getElementById('ri-national').classList.add('active-region');
+    var africa=['Angola','Botswana','Congo (DRC)','Ghana','Kenya','Mozambique','Namibia','Nigeria','Tanzania','Uganda','Zambia','Zimbabwe','Other African Country'];
+    if(isSA) document.getElementById('ri-local').classList.add('active-region');
     else if(africa.indexOf(country)>-1) document.getElementById('ri-regional').classList.add('active-region');
-    else if(country) document.getElementById('ri-international').classList.add('active-region');
+    else document.getElementById('ri-international').classList.add('active-region');
   };
 
   window.selectTicket = function(el){
@@ -666,8 +667,7 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
   function regionLabel(){
     var country=v('f_country'), province=v('f_province');
     var africa=['Angola','Botswana','Congo (DRC)','Ghana','Kenya','Mozambique','Namibia','Nigeria','Tanzania','Uganda','Zambia','Zimbabwe','Other African Country'];
-    if(country==='South Africa' && province==='North West') return { text:'Local — North West', cls:'local' };
-    if(country==='South Africa') return { text:'National — South Africa', cls:'local' };
+    if(country==='South Africa') return { text:'Local — South Africa'+(province?' ('+province+')':''), cls:'local' };
     if(africa.indexOf(country)>-1) return { text:'Regional — Africa', cls:'international' };
     return { text:'International', cls:'international' };
   }
@@ -714,16 +714,22 @@ footer{background:#fff;border-top:3px solid var(--gold);padding:52px 60px;displa
       dietary:v('f_dietary'), notes:v('f_notes')
     };
     fetch(SCRIPT_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify(payload)
     })
-    .then(function(){
-      document.getElementById('pageBody').style.display='none';
-      var sw = document.getElementById('successWrap');
-      sw.classList.add('show');
-      document.getElementById('refCode').textContent = refCode;
-      window.scrollTo({top:0,behavior:'smooth'});
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(res.ok || res.next){
+        document.getElementById('pageBody').style.display='none';
+        var sw = document.getElementById('successWrap');
+        sw.classList.add('show');
+        document.getElementById('refCode').textContent = refCode;
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        btn.disabled=false; btn.textContent='Confirm & Submit Registration';
+        alert('Submission error. Please try again or email info@samca.co.za');
+      }
     })
     .catch(function(){
       btn.disabled=false; btn.textContent='Confirm & Submit Registration';
